@@ -12,11 +12,11 @@ namespace :api do
 
   desc "Schedule import of shelters from Irma"
   task :irma => :environment do
-    if Rails.env.development?
+    #if Rails.env.development?
       ImportIrmaSheltersJob.perform_now
-    else
-      puts "Not running api:irma because it's not development mode. Mode: #{Rails.env}"
-    end
+    #else
+    #  puts "Not running api:irma because it's not development mode. Mode: #{Rails.env}"
+    #end
   end
 end
 
