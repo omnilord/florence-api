@@ -17,6 +17,13 @@ namespace :fema do
   end
 end
 
+namespace :shakenfury2019 do
+  desc "Schedule an import from FEMA"
+  task :import => :environment do
+    ImportShakenFuryKySheltersJob.perform_now
+  end
+end
+
 namespace :amazon do
   desc "Schedule import of Amazon Products"
   task :import => :environment do
