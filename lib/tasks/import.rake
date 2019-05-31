@@ -24,6 +24,13 @@ namespace :shakenfury2019 do
   end
 end
 
+namespace :shakenfuryfood2019 do
+  desc "Schedule an import from FEMA"
+  task :import => :environment do
+    ImportShakenFuryFoodJob.perform_now
+  end
+end
+
 namespace :amazon do
   desc "Schedule import of Amazon Products"
   task :import => :environment do

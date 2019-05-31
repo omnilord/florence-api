@@ -16,7 +16,7 @@ heroku pg:pull REMOTE_DB_NAME_HERE production_hurricane_db
 3. Dump the Shelters table to a file and import into your local
 ```
 pg_dump --no-owner --clean --if-exists -t shelters production_hurricane_db > db/prod_backup_shelters.dump.sql
-psql -D harvey-api_development -1 -f db/prod_backup_shelters.dump.sql
+psql -d harvey-api_development -1 -f db/prod_backup_shelters.dump.sql
 ```
 
 4. Run whichever import you are doing.  The most recent import was for Shaken Fury:
