@@ -1,3 +1,4 @@
+=begin
 Geocoder.configure(
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
@@ -20,3 +21,10 @@ Geocoder.configure(
   # units: :mi,                 # :km for kilometers or :mi for miles
   # distances: :linear          # :spherical or :linear
 )
+=end
+
+Geocoder.configure(mapbox: {
+  api_key: ENV.fetch('MAPBOX_API_KEY', ''),
+  dataset: 'mapbox.places',
+  country: 'us'
+})

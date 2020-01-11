@@ -1,20 +1,16 @@
 function simpleMap(options) {
-  var selector = options.selector
-  var name = options.name || "Location"
-  var lat = options.lat
-  var lng = options.lng
+  var center = [ options.lng, options.lat ],
+      map = new mapboxgl.Map({
+        container: document.querySelector(options.selector),
+        // style: 'mapbox://styles/miklb-c4tb/cjnozdzs41qlx2rqvf7mwfztt',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: center,
+        zoom: 13.5
+      }),
+      el = document.createElement('div');
 
-  var element = document.querySelector(selector)
-  if (!!element) {
-    var map = new google.maps.Map(element, {
-      zoom: 12,
-      center: { lat: lat, lng: lng }
-    })
-
-    var marker = new google.maps.Marker({
-      position: { lat: lat, lng: lng },
-      map: map,
-      title: name
-    })
-  }
+  el.className = 'marker';
+  new mapboxgl.Marker(el)
+    .setLngLat(center)
+    .addTo(map);
 }

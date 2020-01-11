@@ -22,6 +22,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+  <!-- mapping -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+  <script>
+    mapboxgl.accessToken = '<%= ENV.fetch('MAPBOX_API_KEY', '') %>';
+  <% if ENV["MAPBOX_API_KEY"].blank? %>
+    console.log('To enable the Mapping, you will need to set a Mapbox API key in .env');
+  <% end %>
+  </script>
 </head>
 <body>
   <%= render partial: 'layouts/menu' %>
@@ -39,11 +48,5 @@
   <footer>
     Code is available at <a href="http://github.com/hurricane-response/florence-api">GitHub</a>. Contributors welcome!
   </footer>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_JS_API_KEY'] %>&libraries=places"></script>
-  <% if ENV["GOOGLE_MAPS_JS_API_KEY"].blank? %>
-  <script>
-    console.log("To enable the Google auto-complete, you'll need to set a google maps API key in .env")
-  </script>
-  <% end %>
 </body>
 </html>
